@@ -1,25 +1,48 @@
-package models;
+package com.example.onlineshop.models;
 
+import javax.persistence.*;
+import java.text.MessageFormat;
+import java.util.stream.Collectors;
+
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @Column(name = "product_id")
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id",
+            referencedColumnName = "brand_id")
     private Brand brand;
+
+    @Column( name = "model", nullable = false)
     private String model;
     private String description;
+
+    @Column(nullable = false)
     private float price;
+
+    @Column(nullable = false)
     private int quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
 
     public Product() {
     }
 
     public Product(int id, Brand brand, String model, String description, float price, int quantity, Category category) {
-      setId(id);
-      setBrand(brand);
-      setModel(model);
-      setDescription(description);
-      setPrice(price);
-      setQuantity(quantity);
-      setCategory(category);
+        setId(id);
+        setBrand(brand);
+        setModel(model);
+        setDescription(description);
+        setPrice(price);
+        setQuantity(quantity);
+        setCategory(category);
 
     }
 
@@ -75,7 +98,21 @@ public class Product {
         return category;
     }
 
+    @Override
+    public String toString() {
+        return MessageFormat.format(
+                "({0}, {1}, {2}, {3}, {4}, {5})",
+                getId(),
+                getBrand(),
+                getModel(),
+                getPrice(),
+                getQuantity(),
+                getCategory()
+        );
+    }
+
     public void setCategory(Category category) {
         this.category = category;
     }
 }
+

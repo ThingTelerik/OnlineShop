@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1 th:inline="text">Hello!</h1>
+    <h2>Products Store</h2>
+</header>
+<tr th:each="product : ${products}">
+    <div class="table-active">
+        <td th:text="${product.getModel()}"></td>
+        <td th:text="${product.getBrand()}"></td>
+        <td th:text="${product.getCategory()}"></td>
+        <td th:text="${product.getPrice()}"></td>
+    </div>
+</tr>
+</body>
+</html>
