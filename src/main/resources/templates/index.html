@@ -10,13 +10,25 @@
     <h1 th:inline="text">Hello!</h1>
     <h2>Products Store</h2>
 </header>
-<tr th:each="product : ${products}">
-    <div class="table-active">
-        <td th:text="${product.getModel()}"></td>
-        <td th:text="${product.getBrand()}"></td>
-        <td th:text="${product.getCategory()}"></td>
-        <td th:text="${product.getPrice()}"></td>
-    </div>
-</tr>
+<table>
+    <thead>Head of the table</thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <div class="table-active">
+            <td th:text="${product.getModel()}"></td>
+            <td th:text="${product.getBrand()}"></td>
+            <td th:text="${product.getCategory()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+        </div>
+    </tr>
+    <tr th:each="brand : ${brands}">
+        <div class="table-active">
+            <td th:text="${brand.getName()}"></td>
+
+        </div>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
