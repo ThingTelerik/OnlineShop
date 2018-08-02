@@ -22,7 +22,7 @@ public class BrandController {
         this.service = service;
     }
 
-    @GetMapping("/")
+    @GetMapping("/brand")
     public String getAll(Model model){
         service.getAll().stream().forEach(System.out::println);
         List<Brand> brands = service.getAll();

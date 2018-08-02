@@ -22,9 +22,8 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public List<Brand> getAll() {
         return repository
-                .getAll()
-                .stream()
-                .collect(Collectors.toList());
+                .getAll();
+
 
     }
 
