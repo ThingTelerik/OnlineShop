@@ -27,6 +27,12 @@
 
         </div>
     </tr>
+    <tr th:each="category : ${categories}">
+        <div class="table-active">
+            <td th:text="${category.getName()}"></td>
+
+        </div>
+    </tr>
     </tbody>
 </table>
 

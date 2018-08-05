@@ -4,6 +4,7 @@ import com.example.onlineshop.data.GenericRepository;
 import com.example.onlineshop.data.HibernateRepository;
 import com.example.onlineshop.data.HibernateUtils;
 import com.example.onlineshop.models.Brand;
+import com.example.onlineshop.models.Category;
 import com.example.onlineshop.models.Product;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,15 @@ public class Config {
         ((HibernateRepository<Brand>) brandGenericRepository).setEntityClass(Brand.class);
 
         return brandGenericRepository;
+    }
+
+    @Bean(name = "Category")
+    @Autowired
+    public GenericRepository<Category> provideCategoryRepo(SessionFactory sessionFactory){
+        GenericRepository<Category> categoryGenericRepository = new HibernateRepository<>(sessionFactory);
+        ((HibernateRepository<Category>) categoryGenericRepository).setEntityClass(Category.class);
+
+        return categoryGenericRepository;
     }
 
 
