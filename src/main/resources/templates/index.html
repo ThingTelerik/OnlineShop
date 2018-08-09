@@ -13,31 +13,29 @@
     <h1 th:inline="text">Hello!</h1>
     <h2>Products Store</h2>
 </header>
-<table>
-    <thead>Head of the table</thead>
-    <tbody>
-    <tr th:each="product : ${products}">
-        <div class="table-active">
-            <td th:text="${product.getModel()}"></td>
-            <td th:text="${product.getBrand()}"></td>
-            <td th:text="${product.getCategory()}"></td>
-            <td th:text="${product.getPrice()}"></td>
-        </div>
-    </tr>
-    <tr th:each="brand : ${brands}">
-        <div class="table-active">
-            <td th:text="${brand.getName()}"></td>
-
-        </div>
-    </tr>
-    <tr th:each="category : ${categories}">
-        <div class="table-active">
-            <td th:text="${category.getName()}"></td>
-
-        </div>
-    </tr>
-    </tbody>
-</table>
+<div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Brand</th>
+            <th scope="col">Category</th>
+            <th scope="col">Model</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <div class="table-active">
+                <!--<td th:text="${product.getId}"></td>-->
+                <td th:text="${product.getBrand()}"></td>
+                <td th:text="${product.getCategory()}"></td>
+                <td th:text="${product.getModel()}"></td>
+                <td th:text="${product.getPrice()}"></td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
