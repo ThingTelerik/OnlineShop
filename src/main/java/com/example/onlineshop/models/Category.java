@@ -57,7 +57,7 @@ public class Category {
     @Override
     public String toString() {
         return MessageFormat.format(
-                "Category:{0}",
+                "{0}",
                 getName()
         );
     }

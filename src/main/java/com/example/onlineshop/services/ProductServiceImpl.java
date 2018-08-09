@@ -26,12 +26,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllByName(String name) {
         List<Product> productsByName = productRepository.getAll();
-        productsByName
+       return productsByName
                 .stream()
                 .filter(product -> product.getModel().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
 
-        return productsByName;
     }
 
     @Override

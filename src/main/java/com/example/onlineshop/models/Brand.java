@@ -57,7 +57,7 @@ public class Brand {
     @Override
     public String toString() {
         return MessageFormat.format(
-                "Brand:{0}",
+                "{0}",
                 getName()
         );
     }

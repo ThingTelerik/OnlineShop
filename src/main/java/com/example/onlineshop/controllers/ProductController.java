@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public String getAll(Model model){
         productService.getAll().stream().forEach(System.out::println);
         List<Product> products = productService.getAll();
@@ -29,5 +30,14 @@ public class ProductController {
         //return productService.getAll();
         return "index";
 
+    }
+
+    @GetMapping("/search")
+    public String showProductsByName(@RequestParam(value = "productName", required = false)  String name, Model model){
+        List<Product> products = this.productService.getAllByName(name);
+        model.addAttribute("search", true);
+        model.addAttribute("productsByName", products);
+
+        return "search";
     }
 }
